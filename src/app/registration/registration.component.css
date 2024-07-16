@@ -1,0 +1,48 @@
+mat-card {
+    max-width: 600px;
+    margin: 2em auto;
+    padding: 1em;
+  }
+  
+  mat-card-title {
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 1em;
+    color: #3f51b5; /* Example color */
+  }
+  
+  mat-form-field {
+    width: 100%;
+    margin-bottom: 1em;
+  }
+  
+  button {
+    width: 100%;
+    margin-top: 1em;
+  }
+  
+  .registration-header {
+    padding-top: 10px;
+    text-align: center;
+    margin-bottom: 2em;
+  }
+  
+  .registration-header .logo {
+    width: 100px; /* Adjust size as needed */
+    height: auto;
+  }
+  
+  .registration-header h1 {
+    font-size: 24px;
+    font-weight: 500;
+    margin: 0.5em 0;
+  }
+
+  .file-upload-container {
+    margin-top: 20px; /* Adjust margin as needed */
+}
+
+.file-input {
+    width: 100%; /* Make the file input fill its container */
+}
+  

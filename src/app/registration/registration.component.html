@@ -1,0 +1,61 @@
+<div class="registration-container">
+    <div class="registration-header">
+      <img src="assets/ups.png" alt="UPS Logo" class="logo">
+      <h1>Interested in making an impact? Apply now and be part of our team.</h1>
+    </div>
+  
+    <mat-card class="registration-card">
+      <mat-card-title>Candidate Registration</mat-card-title>
+      <mat-card-content>
+        <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+          <mat-form-field appearance="fill">
+            <mat-label>First Name</mat-label>
+            <input matInput formControlName="firstName" required>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Last Name</mat-label>
+            <input matInput formControlName="lastName" required>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" type="email" required>
+            <mat-error *ngIf="registrationForm.get('email')?.hasError('email')">
+              Please enter a valid email address.
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Phone Number</mat-label>
+            <input matInput formControlName="phoneNumber" type="tel" required pattern="[0-9]{10}">
+            <mat-error *ngIf="registrationForm.get('phoneNumber')?.hasError('required')">
+              Phone number is required.
+            </mat-error>
+            <mat-error *ngIf="registrationForm.get('phoneNumber')?.hasError('pattern')">
+              Please enter a valid 10-digit phone number.
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Referrer ID</mat-label>
+            <input matInput formControlName="referrerId" required>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Job ID</mat-label>
+            <mat-select formControlName="jobId" required>
+              <mat-option *ngFor="let job of jobs" [value]="job.code">
+                {{ job.title }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div class="file-upload-container">
+            <button mat-raised-button color="primary" type="button" (click)="fileInput.click()">
+              Upload Resume
+            </button>
+            <input type="file" #fileInput style="display: none;" accept=".pdf,.doc,.docx" (change)="onFileSelected($event)">
+            <span>{{ registrationForm.get('resumeName')?.value }}</span>
+            <mat-error *ngIf="registrationForm.get('resumeName')?.hasError('required')">Resume is required.</mat-error>
+          </div>
+          <button mat-raised-button color="primary" type="submit" [disabled]="!registrationForm.valid">Register</button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  
